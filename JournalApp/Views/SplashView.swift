@@ -5,35 +5,29 @@
 //  Created by Ruya Alhujaili on 30/05/1448 AH.
 //
 
-
 import SwiftUI
 
 struct SplashView: View {
 
     var body: some View {
 
-        ZStack {
+        VStack(spacing: 16) {
 
-            Color.black
-                .ignoresSafeArea()
+            Image("AppIconIllustration")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 100, height: 100)
 
-            VStack(spacing: 16) {
+            Text("Journali")
+                .font(.system(size: 42, weight: .black))
 
-                Image("AppIconIllustration")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 100, height: 100)
+            Text("Your thoughts, your story")
+                .font(.system(size: 18, weight: .light))
+                .tracking(1)
 
-                Text("Journali")
-                    .font(.system(size: 42, weight: .black))
-                    .foregroundStyle(.white)
-
-                Text("Your thoughts, your story")
-                    .font(.system(size: 18, weight: .light))
-                    .tracking(1)
-                    .foregroundStyle(Color.white)
-            }
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .preferredColorScheme(.dark)
     }
 }
 

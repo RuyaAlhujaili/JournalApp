@@ -6,6 +6,7 @@ struct JournalApp: App {
 
     var body: some Scene {
         WindowGroup {
+            JournalHomeView() .preferredColorScheme(.dark)
                     Group {
                         if showSplash {
                             SplashView()
@@ -20,3 +21,5 @@ struct JournalApp: App {
         }
     }
 }
+
+
