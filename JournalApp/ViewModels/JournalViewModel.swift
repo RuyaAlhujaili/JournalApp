@@ -13,4 +13,8 @@ class JournalViewModel {
     func toggleBookmark(for entry: JournalEntry) {
         entry.isBookmarked.toggle()
     }
+    func deleteEntry(_ entry: JournalEntry, context: ModelContext) {
+        context.delete(entry)
+    }
+    
 }
