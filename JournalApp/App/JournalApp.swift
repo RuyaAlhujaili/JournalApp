@@ -1,4 +1,5 @@
 import SwiftUI
+import SwiftData
 
 @main
 struct JournalApp: App {
@@ -6,20 +7,19 @@ struct JournalApp: App {
 
     var body: some Scene {
         WindowGroup {
-            JournalHomeView() .preferredColorScheme(.dark)
-                    Group {
-                        if showSplash {
-                            SplashView()
-                        } else {
-                            JournalHomeView()
-                        }
-                    }
-                    .task {
-                        try? await Task.sleep(for: .seconds(2))
-                        showSplash = false
+            Group {
+                if showSplash {
+                    SplashView()
+                } else {
+                    JournalHomeView()
+                }
+            }
+            .preferredColorScheme(.dark)
+            .task {
+                try? await Task.sleep(for: .seconds(2))
+                showSplash = false
             }
         }
+        .modelContainer(for: JournalEntry.self)
     }
 }
-
-

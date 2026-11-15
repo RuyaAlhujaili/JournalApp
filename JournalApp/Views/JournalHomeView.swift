@@ -1,8 +1,10 @@
-
 import SwiftUI
+import SwiftData
 
 struct JournalHomeView: View {
 
+    @Environment(\.modelContext) private var modelContext
+    @Query(sort: \JournalEntry.date, order: .reverse) private var entries: [JournalEntry]
     @State private var searchText = ""
     @State private var viewModel = JournalViewModel()
     @State private var showAddJournal = false
@@ -13,7 +15,7 @@ struct JournalHomeView: View {
 
             VStack {
 
-                if viewModel.entries.isEmpty {
+                if entries.isEmpty {
 
                     Spacer()
 
@@ -27,7 +29,7 @@ struct JournalHomeView: View {
 
                         LazyVStack(spacing: 16) {
 
-                            ForEach(viewModel.entries) { entry in
+                            ForEach(entries) { entry in
 
                                 JournalEntryCardView(
                                     entry: entry,
@@ -80,7 +82,8 @@ struct JournalHomeView: View {
                     AddJournalView { title, content in
                         viewModel.addEntry(
                             title: title,
-                            content: content
+                            content: content,
+                            context: modelContext
                         )
                     }
                 }
@@ -93,5 +96,6 @@ struct JournalHomeView: View {
 
 #Preview {
     JournalHomeView()
+        .modelContainer(for: JournalEntry.self, inMemory: true)
         .preferredColorScheme(.dark)
 }
