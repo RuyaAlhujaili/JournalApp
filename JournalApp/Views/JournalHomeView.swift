@@ -112,7 +112,7 @@ struct JournalHomeView: View {
             )
             .sheet(isPresented: $showAddJournal) {
                 NavigationStack {
-                    AddJournalView { title, content in
+                    JournalEditorView { title, content in
                         viewModel.addEntry(
                             title: title,
                             content: content,
@@ -123,7 +123,9 @@ struct JournalHomeView: View {
             }
             .sheet(item: $entryToEdit) { entry in
                 NavigationStack {
-                    EditJournalView(entry: entry)
+                    JournalEditorView(entry: entry) { title, content in
+                        viewModel.updateEntry(entry, title: title, content: content)
+                    }
                 }
             }
             .alert("Delete Journal?", isPresented: $showDeleteAlert) {

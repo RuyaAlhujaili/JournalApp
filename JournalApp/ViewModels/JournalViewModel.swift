@@ -10,6 +10,11 @@ class JournalViewModel {
         context.insert(newEntry)
     }
 
+    func updateEntry(_ entry: JournalEntry, title: String, content: String) {
+        entry.title = title
+        entry.content = content
+    }
+
     func toggleBookmark(for entry: JournalEntry) {
         entry.isBookmarked.toggle()
     }
