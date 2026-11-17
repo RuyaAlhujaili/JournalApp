@@ -1,10 +1,3 @@
-//
-//  JournalEmptyStateView.swift
-//  JournalApp
-//
-//  Created by Ruya Alhujaili on 30/05/1448 AH.
-//
-
 import SwiftUI
 
 struct JournalEmptyStateView: View {
