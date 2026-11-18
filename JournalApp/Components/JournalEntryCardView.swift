@@ -45,11 +45,6 @@ struct JournalEntryCardView: View {
                 }
                 .buttonStyle(.plain)
                 .foregroundStyle(purple)
-                .accessibilityLabel(
-                    entry.isBookmarked
-                    ? "Remove bookmark"
-                    : "Add bookmark"
-                )
             }
 
             Text(entry.content)
